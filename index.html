@@ -1,15 +1,35 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar-SA" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عيادة ديرما كير - نظام حجز المواعيد الذكي</title>
-    <meta name="description" content="نظام حجز مواعيد متكامل للعيادات التجميلية - احجز موعدك بسهولة وأمان">
-    <meta name="keywords" content="عيادة, تجميل, حجوزات, مواعيد, ليزر, بوتوكس, فيلر">
+    
+    <!-- Meta Tags محسنة -->
+    <meta name="description" content="احجز موعدك في عيادة ديرما كير - أفضل عيادة تجميلية في الرياض. نظام حجوزات ذكي وسريع وآمن.">
+    <meta name="keywords" content="عيادة تجميلية, حجز مواعيد, ليزر, بوتوكس, فيلر, الرياض, عيادة تجميل, حجوزات طبية">
     <meta name="author" content="Badr Aldien">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="عيادة ديرما كير - نظام الحجوزات الذكي">
+    <meta property="og:description" content="احجز موعدك في أفضل العيادات التجميلية - نظام حجوزات سهل وسريع">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://badrsabra.github.io/clinic-booking-system/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_SA">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="عيادة ديرما كير - نظام الحجوزات">
+    <meta name="twitter:description" content="نظام حجوزات ذكي للعيادات التجميلية">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://badrsabra.github.io/clinic-booking-system/">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/doctor-female.png">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏥</text></svg>">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,9 +56,10 @@
             --light: #F8FAFC;
             --dark: #1E293B;
             --gray: #64748B;
-            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s ease;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --radius: 12px;
             --radius-lg: 20px;
         }
@@ -52,15 +73,73 @@
         
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
         
         body {
             font-family: 'Cairo', sans-serif;
-            line-height: 1.8;
+            line-height: 1.6;
             color: var(--dark);
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
             overflow-x: hidden;
+        }
+        
+        /* ===== Accessibility ===== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        :focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 2px;
+        }
+        
+        /* ===== Typography ===== */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--primary-dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
         }
         
         /* ===== Navigation ===== */
@@ -164,389 +243,8 @@
             cursor: pointer;
             z-index: 1001;
             padding: 0.5rem;
-        }
-        
-        /* ===== Dashboard Styles ===== */
-        .dashboard-section {
-            padding: 150px 0 80px;
-            min-height: 100vh;
-        }
-        
-        .dashboard-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        
-        .dashboard-header {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        .dashboard-title {
-            font-size: 2rem;
-            color: var(--primary-dark);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .admin-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .admin-avatar {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        
-        .logout-btn {
-            background: var(--danger);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: var(--radius);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
-        }
-        
-        .logout-btn:hover {
-            background: #dc2626;
-            transform: translateY(-2px);
-        }
-        
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 2rem;
-        }
-        
-        .dashboard-sidebar {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            height: fit-content;
-        }
-        
-        .sidebar-menu {
-            list-style: none;
-        }
-        
-        .sidebar-menu li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .sidebar-menu a {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            text-decoration: none;
-            color: var(--dark);
-            border-radius: var(--radius);
-            transition: var(--transition);
-        }
-        
-        .sidebar-menu a:hover,
-        .sidebar-menu a.active {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-        }
-        
-        .sidebar-menu a i {
-            width: 20px;
-            text-align: center;
-        }
-        
-        .dashboard-content {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-        }
-        
-        .stats-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .stat-card {
-            background: var(--light);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            border-left: 4px solid var(--primary);
-            transition: var(--transition);
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-        
-        .stat-card h3 {
-            color: var(--gray);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-card .value {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary-dark);
-        }
-        
-        .stat-card .change {
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .change.positive {
-            color: var(--secondary);
-        }
-        
-        .change.negative {
-            color: var(--danger);
-        }
-        
-        .table-container {
-            background: var(--light);
-            border-radius: var(--radius);
-            overflow: hidden;
-            margin-top: 2rem;
-        }
-        
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .data-table th {
-            background: var(--primary-dark);
-            color: white;
-            padding: 1rem;
-            text-align: right;
-            font-weight: 600;
-        }
-        
-        .data-table td {
-            padding: 1rem;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .data-table tr:hover {
-            background: #f1f5f9;
-        }
-        
-        .status-badge {
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: inline-block;
-        }
-        
-        .status-confirmed {
-            background: #d1fae5;
-            color: #065f46;
-        }
-        
-        .status-pending {
-            background: #fef3c7;
-            color: #92400e;
-        }
-        
-        .status-cancelled {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-        
-        .action-buttons {
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .action-btn {
-            padding: 0.5rem;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-        
-        .btn-edit {
-            background: var(--warning);
-            color: white;
-        }
-        
-        .btn-delete {
-            background: var(--danger);
-            color: white;
-        }
-        
-        .btn-confirm {
-            background: var(--secondary);
-            color: white;
-        }
-        
-        .action-btn:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-        
-        .dashboard-forms {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .form-card {
-            background: var(--light);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-        }
-        
-        .form-card h3 {
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #cbd5e1;
-            border-radius: var(--radius);
-            font-family: 'Cairo', sans-serif;
-            transition: var(--transition);
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
-        }
-        
-        /* ===== Mobile Menu Styles ===== */
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 100%;
-                height: 100vh;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 2rem;
-                padding: 2rem;
-                z-index: 1000;
-                opacity: 0;
-                transform: translateX(100%);
-                transition: transform 0.3s ease, opacity 0.3s ease;
-            }
-            
-            .nav-links.active {
-                display: flex;
-                opacity: 1;
-                transform: translateX(0);
-            }
-            
-            .nav-links li {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .nav-links a {
-                padding: 1rem;
-                font-size: 1.2rem;
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .mobile-menu-btn.active i {
-                transform: rotate(90deg);
-            }
-            
-            .mobile-menu-btn i {
-                transition: transform 0.3s ease;
-            }
-            
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .dashboard-sidebar {
-                order: 2;
-            }
-            
-            .stats-cards {
-                grid-template-columns: 1fr;
-            }
-            
-            .dashboard-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .admin-info {
-                flex-direction: column;
-            }
+            min-width: 44px;
+            min-height: 44px;
         }
         
         /* ===== Hero Section ===== */
@@ -581,15 +279,12 @@
         }
         
         .hero-content h1 {
-            font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            animation: fadeInUp 1s ease;
         }
         
         .hero-content p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.2s both;
         }
         
         .hero-stats {
@@ -597,7 +292,6 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin: 3rem 0;
-            animation: fadeInUp 1s ease 0.4s both;
         }
         
         .stat {
@@ -610,6 +304,7 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
             display: block;
         }
         
@@ -623,7 +318,7 @@
         .hero-buttons {
             display: flex;
             gap: 1rem;
-            animation: fadeInUp 1s ease 0.6s both;
+            flex-wrap: wrap;
         }
         
         .btn {
@@ -640,6 +335,8 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            min-height: 44px;
+            min-width: 44px;
         }
         
         .btn:before {
@@ -666,7 +363,8 @@
             box-shadow: var(--shadow);
         }
         
-        .btn-primary:hover {
+        .btn-primary:hover,
+        .btn-primary:focus {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
@@ -677,14 +375,14 @@
             box-shadow: var(--shadow);
         }
         
-        .btn-secondary:hover {
+        .btn-secondary:hover,
+        .btn-secondary:focus {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
         
         .hero-image {
             position: relative;
-            animation: float 6s ease-in-out infinite;
         }
         
         .hero-image img {
@@ -711,19 +409,9 @@
             margin-bottom: 4rem;
         }
         
-        .section-header h2 {
-            font-size: 2.5rem;
-        }
-        
-        .section-header p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
             gap: 2rem;
         }
         
@@ -929,6 +617,296 @@
             display: flex;
             justify-content: space-between;
             margin-top: 3rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        /* ===== Dashboard Section ===== */
+        .dashboard-section {
+            padding: 150px 0 80px;
+            min-height: 100vh;
+        }
+        
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .dashboard-header {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .dashboard-title {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .admin-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .admin-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .logout-btn {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            min-height: 44px;
+        }
+        
+        .logout-btn:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+        }
+        
+        .dashboard-sidebar {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            text-decoration: none;
+            color: var(--dark);
+            border-radius: var(--radius);
+            transition: var(--transition);
+            min-height: 44px;
+        }
+        
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+        
+        .sidebar-menu a i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .dashboard-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--light);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .stat-card h3 {
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+        
+        .stat-card .change {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .change.positive {
+            color: var(--secondary);
+        }
+        
+        .change.negative {
+            color: var(--danger);
+        }
+        
+        .table-container {
+            background: var(--light);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 2rem;
+            overflow-x: auto;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+        
+        .data-table th {
+            background: var(--primary-dark);
+            color: white;
+            padding: 1rem;
+            text-align: right;
+            font-weight: 600;
+        }
+        
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .data-table tr:hover {
+            background: #f1f5f9;
+        }
+        
+        .status-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .status-confirmed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .status-cancelled {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .action-btn {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-edit {
+            background: var(--warning);
+            color: white;
+        }
+        
+        .btn-delete {
+            background: var(--danger);
+            color: white;
+        }
+        
+        .btn-confirm {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .action-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .dashboard-forms {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .form-card {
+            background: var(--light);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         /* ===== Features Section ===== */
@@ -939,7 +917,7 @@
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
             gap: 2rem;
         }
         
@@ -979,7 +957,7 @@
         
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
             gap: 3rem;
             margin-bottom: 3rem;
         }
@@ -1009,6 +987,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            min-height: 44px;
         }
         
         .footer-links a:hover {
@@ -1033,6 +1012,8 @@
             color: white;
             text-decoration: none;
             transition: var(--transition);
+            min-width: 44px;
+            min-height: 44px;
         }
         
         .social-link:hover {
@@ -1045,200 +1026,6 @@
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.5);
-        }
-        
-        /* ===== Login Page ===== */
-        .login-page {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            padding: 2rem;
-        }
-        
-        .login-container {
-            width: 100%;
-            max-width: 400px;
-        }
-        
-        .login-card {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 3rem;
-            box-shadow: var(--shadow-lg);
-            text-align: center;
-        }
-        
-        .login-logo {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            color: white;
-            font-size: 2rem;
-        }
-        
-        .login-card h2 {
-            color: var(--primary-dark);
-            margin-bottom: 0.5rem;
-        }
-        
-        .login-card p {
-            color: var(--gray);
-            margin-bottom: 2rem;
-        }
-        
-        /* ===== Animations ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: perspective(1000px) rotateY(-10deg) translateY(0);
-            }
-            50% {
-                transform: perspective(1000px) rotateY(-10deg) translateY(-20px);
-            }
-        }
-        
-        /* ===== Responsive Design ===== */
-        @media (max-width: 1024px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-            
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .hero-stats {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 1rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 1.7rem;
-            }
-            
-            .hero-stats {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .booking-steps {
-                flex-direction: column;
-                gap: 2rem;
-            }
-            
-            .booking-steps:before {
-                display: none;
-            }
-            
-            .form-actions {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .booking-card,
-            .service-card,
-            .login-card {
-                padding: 1.5rem;
-            }
-            
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-            
-            .hero-content p {
-                font-size: 1rem;
-            }
-            
-            .dashboard-content,
-            .dashboard-sidebar {
-                padding: 1rem;
-            }
-        }
-        
-        /* ===== Utility Classes ===== */
-        .text-center {
-            text-align: center;
-        }
-        
-        .mb-1 { margin-bottom: 1rem; }
-        .mb-2 { margin-bottom: 2rem; }
-        .mb-3 { margin-bottom: 3rem; }
-        .mb-4 { margin-bottom: 4rem; }
-        
-        .mt-1 { margin-top: 1rem; }
-        .mt-2 { margin-top: 2rem; }
-        .mt-3 { margin-top: 3rem; }
-        .mt-4 { margin-top: 4rem; }
-        
-        /* ===== Loading Spinner ===== */
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid var(--light);
-            border-top: 4px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
         
         /* ===== Toast Notifications ===== */
@@ -1257,6 +1044,7 @@
             transform: translateY(100px);
             opacity: 0;
             transition: var(--transition);
+            max-width: 400px;
         }
         
         .toast.show {
@@ -1283,14 +1071,196 @@
         .toast.error .toast-icon {
             color: var(--danger);
         }
+        
+        /* ===== Mobile Menu Styles ===== */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                padding: 2rem;
+                z-index: 1000;
+                opacity: 0;
+                transform: translateX(100%);
+                transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                opacity: 1;
+                transform: translateX(0);
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links a {
+                padding: 1rem;
+                font-size: 1.2rem;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .hero-image img {
+                transform: none;
+            }
+            
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard-sidebar {
+                order: 2;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        /* ===== Responsive Design ===== */
+        @media (max-width: 480px) {
+            .booking-card,
+            .service-card {
+                padding: 1.5rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .dashboard-content,
+            .dashboard-sidebar {
+                padding: 1rem;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-container {
+                gap: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* ===== Animations ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* ===== Utility Classes ===== */
+        .text-center {
+            text-align: center;
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+        .mb-3 { margin-bottom: 3rem; }
+        .mb-4 { margin-bottom: 4rem; }
+        
+        .mt-1 { margin-top: 1rem; }
+        .mt-2 { margin-top: 2rem; }
+        .mt-3 { margin-top: 3rem; }
+        .mt-4 { margin-top: 4rem; }
+        
+        /* ===== Print Styles ===== */
+        @media print {
+            .navbar,
+            .hero-buttons,
+            .mobile-menu-btn,
+            .logout-btn,
+            .action-buttons {
+                display: none !important;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .booking-card {
+                box-shadow: none !important;
+                border: 1px solid #ddd;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="القائمة الرئيسية">
         <div class="nav-container">
-            <a href="#home" class="logo">
-                <div class="logo-icon">
+            <a href="#home" class="logo" aria-label="عودة إلى الصفحة الرئيسية">
+                <div class="logo-icon" aria-hidden="true">
                     <i class="fas fa-stethoscope"></i>
                 </div>
                 <div class="logo-text">
@@ -1299,26 +1269,26 @@
                 </div>
             </a>
             
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="فتح القائمة" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
             
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> الرئيسية</a></li>
-                <li><a href="#services" class="nav-link"><i class="fas fa-concierge-bell"></i> الخدمات</a></li>
-                <li><a href="#booking" class="nav-link"><i class="fas fa-calendar-check"></i> حجز موعد</a></li>
-                <li><a href="#features" class="nav-link"><i class="fas fa-star"></i> المميزات</a></li>
-                <li><a href="#dashboard" class="nav-link"><i class="fas fa-tachometer-alt"></i> لوحة التحكم</a></li>
-                <li><a href="#contact" class="nav-link"><i class="fas fa-phone"></i> اتصل بنا</a></li>
+            <ul class="nav-links" id="navLinks" role="menubar">
+                <li role="none"><a href="#home" class="nav-link active" role="menuitem"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li role="none"><a href="#services" class="nav-link" role="menuitem"><i class="fas fa-concierge-bell"></i> الخدمات</a></li>
+                <li role="none"><a href="#booking" class="nav-link" role="menuitem"><i class="fas fa-calendar-check"></i> حجز موعد</a></li>
+                <li role="none"><a href="#features" class="nav-link" role="menuitem"><i class="fas fa-star"></i> المميزات</a></li>
+                <li role="none"><a href="#dashboard" class="nav-link" role="menuitem"><i class="fas fa-tachometer-alt"></i> لوحة التحكم</a></li>
+                <li role="none"><a href="#contact" class="nav-link" role="menuitem"><i class="fas fa-phone"></i> اتصل بنا</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero" id="home" aria-labelledby="hero-title">
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="animate__animated animate__fadeInUp">راحة المريض تبدأ بحجز بسيط</h1>
+                <h1 id="hero-title" class="animate__animated animate__fadeInUp">راحة المريض تبدأ بحجز بسيط</h1>
                 <p class="animate__animated animate__fadeInUp animate__delay-1s">نظام حجوزات ذكي ومتطور يسهل عليك حجز مواعيدك في أفضل العيادات التجميلية بأعلى معايير الجودة والأمان.</p>
                 
                 <div class="hero-stats">
@@ -1346,24 +1316,24 @@
                 </div>
             </div>
             
-            <div class="hero-image animate__animated animate__fadeInRight">
-                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="عيادة تجميلية">
+            <div class="hero-image animate__animated animate__fadeInRight" aria-hidden="true">
+                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="داخل عيادة تجميلية حديثة" loading="lazy">
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
+    <section class="services" id="services" aria-labelledby="services-title">
         <div class="section-container">
             <div class="section-header">
-                <h2>خدماتنا المتكاملة</h2>
+                <h2 id="services-title">خدماتنا المتكاملة</h2>
                 <p>نقدم مجموعة واسعة من خدمات التجميل الطبية بأحدث التقنيات العالمية</p>
             </div>
             
             <div class="services-grid">
                 <!-- Service 1 -->
-                <div class="service-card">
-                    <div class="service-icon">
+                <article class="service-card animate-on-scroll">
+                    <div class="service-icon" aria-hidden="true">
                         <i class="fas fa-spa"></i>
                     </div>
                     <h3>الليزر والتجميل</h3>
@@ -1378,14 +1348,14 @@
                     
                     <div class="service-price">250 ريال <span>للساعة</span></div>
                     
-                    <button class="btn btn-primary" onclick="selectService('laser')">
+                    <button class="btn btn-primary" onclick="selectService('laser')" aria-label="حجز خدمة الليزر والتجميل">
                         <i class="fas fa-calendar-check"></i> احجز هذه الخدمة
                     </button>
-                </div>
+                </article>
                 
                 <!-- Service 2 -->
-                <div class="service-card">
-                    <div class="service-icon">
+                <article class="service-card animate-on-scroll">
+                    <div class="service-icon" aria-hidden="true">
                         <i class="fas fa-syringe"></i>
                     </div>
                     <h3>الحقن التجميلي</h3>
@@ -1400,14 +1370,14 @@
                     
                     <div class="service-price">800 ريال <span>للمنطقة</span></div>
                     
-                    <button class="btn btn-primary" onclick="selectService('botox')">
+                    <button class="btn btn-primary" onclick="selectService('botox')" aria-label="حجز خدمة الحقن التجميلي">
                         <i class="fas fa-calendar-check"></i> احجز هذه الخدمة
                     </button>
-                </div>
+                </article>
                 
                 <!-- Service 3 -->
-                <div class="service-card">
-                    <div class="service-icon">
+                <article class="service-card animate-on-scroll">
+                    <div class="service-icon" aria-hidden="true">
                         <i class="fas fa-allergies"></i>
                     </div>
                     <h3>علاجات البشرة</h3>
@@ -1422,48 +1392,48 @@
                     
                     <div class="service-price">1,200 ريال <span>للجلسة</span></div>
                     
-                    <button class="btn btn-primary" onclick="selectService('skin')">
+                    <button class="btn btn-primary" onclick="selectService('skin')" aria-label="حجز خدمة علاجات البشرة">
                         <i class="fas fa-calendar-check"></i> احجز هذه الخدمة
                     </button>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- Booking Section -->
-    <section class="booking" id="booking">
+    <section class="booking" id="booking" aria-labelledby="booking-title">
         <div class="booking-container">
             <div class="section-header text-center">
-                <h2>حجز موعد جديد</h2>
+                <h2 id="booking-title">حجز موعد جديد</h2>
                 <p>اختر خدمتك وحدد الموعد المناسب في 4 خطوات بسيطة</p>
             </div>
             
             <div class="booking-card">
-                <div class="booking-steps">
-                    <div class="step active" data-step="1">
-                        <div class="step-number">1</div>
+                <div class="booking-steps" aria-label="خطوات حجز الموعد">
+                    <div class="step active" data-step="1" aria-current="step">
+                        <div class="step-number" aria-hidden="true">1</div>
                         <div class="step-label">الخدمة</div>
                     </div>
                     <div class="step" data-step="2">
-                        <div class="step-number">2</div>
+                        <div class="step-number" aria-hidden="true">2</div>
                         <div class="step-label">التاريخ</div>
                     </div>
                     <div class="step" data-step="3">
-                        <div class="step-number">3</div>
+                        <div class="step-number" aria-hidden="true">3</div>
                         <div class="step-label">المعلومات</div>
                     </div>
                     <div class="step" data-step="4">
-                        <div class="step-number">4</div>
+                        <div class="step-number" aria-hidden="true">4</div>
                         <div class="step-label">التأكيد</div>
                     </div>
                 </div>
                 
-                <form id="bookingForm">
+                <form id="bookingForm" aria-labelledby="booking-title" novalidate>
                     <!-- Step 1: Service Selection -->
-                    <div class="form-step active" id="step1">
+                    <div class="form-step active" id="step1" role="tabpanel" aria-labelledby="step1-tab">
                         <div class="form-group">
                             <label for="service">اختر الخدمة المطلوبة</label>
-                            <select class="form-control" id="service" required>
+                            <select class="form-control" id="service" required aria-required="true">
                                 <option value="">-- اختر الخدمة --</option>
                                 <option value="laser">ليزر إزالة الشعر - 250 ريال</option>
                                 <option value="botox">حقن البوتوكس - 800 ريال</option>
@@ -1474,7 +1444,7 @@
                         
                         <div class="form-group">
                             <label for="doctor">اختر الطبيب المختص</label>
-                            <select class="form-control" id="doctor" required>
+                            <select class="form-control" id="doctor" required aria-required="true">
                                 <option value="">-- اختر الطبيب --</option>
                                 <option value="dr1">د. سارة أحمد - أخصائية تجميل</option>
                                 <option value="dr2">د. محمد الخالد - أخصائي جلدية</option>
@@ -1484,15 +1454,15 @@
                     </div>
                     
                     <!-- Step 2: Date & Time -->
-                    <div class="form-step" id="step2">
+                    <div class="form-step" id="step2" role="tabpanel" aria-labelledby="step2-tab" hidden>
                         <div class="form-group">
                             <label for="date">التاريخ المفضل</label>
-                            <input type="date" class="form-control" id="date" required>
+                            <input type="date" class="form-control" id="date" required aria-required="true">
                         </div>
                         
                         <div class="form-group">
                             <label for="time">الوقت المفضل</label>
-                            <select class="form-control" id="time" required>
+                            <select class="form-control" id="time" required aria-required="true">
                                 <option value="">-- اختر الوقت --</option>
                                 <option value="09:00">09:00 صباحاً</option>
                                 <option value="10:00">10:00 صباحاً</option>
@@ -1509,20 +1479,22 @@
                     </div>
                     
                     <!-- Step 3: Personal Information -->
-                    <div class="form-step" id="step3">
+                    <div class="form-step" id="step3" role="tabpanel" aria-labelledby="step3-tab" hidden>
                         <div class="form-group">
                             <label for="name">الاسم الكامل</label>
-                            <input type="text" class="form-control" id="name" placeholder="أدخل اسمك الثلاثي" required>
+                            <input type="text" class="form-control" id="name" placeholder="أدخل اسمك الثلاثي" required aria-required="true">
                         </div>
                         
                         <div class="form-group">
                             <label for="phone">رقم الجوال</label>
-                            <input type="tel" class="form-control" id="phone" placeholder="05xxxxxxxx" required>
+                            <input type="tel" class="form-control" id="phone" placeholder="05xxxxxxxx" required aria-required="true">
+                            <small class="text-muted" style="display: block; margin-top: 0.5rem; color: var(--gray);">مثال: 0551234567</small>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">البريد الإلكتروني (اختياري)</label>
-                            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com" aria-describedby="emailHelp">
+                            <small id="emailHelp" style="display: block; margin-top: 0.5rem; color: var(--gray);">لإرسال تأكيد الحجز</small>
                         </div>
                         
                         <div class="form-group">
@@ -1532,30 +1504,30 @@
                     </div>
                     
                     <!-- Step 4: Confirmation -->
-                    <div class="form-step" id="step4">
+                    <div class="form-step" id="step4" role="tabpanel" aria-labelledby="step4-tab" hidden>
                         <div class="booking-summary">
                             <h3>ملخص الحجز</h3>
-                            <div id="summaryDetails"></div>
+                            <div id="summaryDetails" aria-live="polite"></div>
                         </div>
                         
                         <div class="form-group mt-3">
-                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" id="terms" required style="width: auto;">
-                                <span>أوافق على الشروط والأحكام وأقر بقراءة سياسة الخصوصية</span>
+                            <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
+                                <input type="checkbox" id="terms" required style="width: auto; margin-top: 0.3rem;">
+                                <span>أوافق على <a href="#terms-modal" style="color: var(--primary);">الشروط والأحكام</a> وأقر بقراءة <a href="#privacy" style="color: var(--primary);">سياسة الخصوصية</a></span>
                             </label>
                         </div>
                     </div>
                     
                     <div class="form-actions">
-                        <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">
+                        <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;" aria-label="الرجوع للخطوة السابقة">
                             <i class="fas fa-arrow-right"></i> السابق
                         </button>
                         
-                        <button type="button" class="btn btn-primary" id="nextBtn">
+                        <button type="button" class="btn btn-primary" id="nextBtn" aria-label="المتابعة للخطوة التالية">
                             التالي <i class="fas fa-arrow-left"></i>
                         </button>
                         
-                        <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;">
+                        <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;" aria-label="تأكيد الحجز">
                             <i class="fas fa-check-circle"></i> تأكيد الحجز
                         </button>
                     </div>
@@ -1565,81 +1537,81 @@
     </section>
 
     <!-- Features Section -->
-    <section class="features" id="features">
+    <section class="features" id="features" aria-labelledby="features-title">
         <div class="section-container">
             <div class="section-header text-center">
-                <h2>مميزات النظام</h2>
+                <h2 id="features-title">مميزات النظام</h2>
                 <p>نظام حجوزات ذكي مصمم لتقديم أفضل تجربة للمستخدم</p>
             </div>
             
             <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">
+                <article class="feature-item animate-on-scroll">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>آمن 100%</h3>
                     <p>نظام آمن يحافظ على خصوصية بياناتك</p>
-                </div>
+                </article>
                 
-                <div class="feature-item">
-                    <div class="feature-icon">
+                <article class="feature-item animate-on-scroll">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
                     <h3>متجاوب</h3>
                     <p>يعمل على جميع الأجهزة والشاشات</p>
-                </div>
+                </article>
                 
-                <div class="feature-item">
-                    <div class="feature-icon">
+                <article class="feature-item animate-on-scroll">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-bolt"></i>
                     </div>
                     <h3>سريع</h3>
                     <p>حجز موعدك في أقل من دقيقتين</p>
-                </div>
+                </article>
                 
-                <div class="feature-item">
-                    <div class="feature-icon">
+                <article class="feature-item animate-on-scroll">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-bell"></i>
                     </div>
                     <h3>تذكيرات</h3>
                     <p>تذكيرات تلقائية قبل الموعد</p>
-                </div>
+                </article>
                 
-                <div class="feature-item">
-                    <div class="feature-icon">
+                <article class="feature-item animate-on-scroll">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-chart-bar"></i>
                     </div>
                     <h3>تقارير</h3>
                     <p>تقارير وإحصائيات مفصلة</p>
-                </div>
+                </article>
                 
-                <div class="feature-item">
-                    <div class="feature-icon">
+                <article class="feature-item animate-on-scroll">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-headset"></i>
                     </div>
                     <h3>دعم فني</h3>
                     <p>دعم فني متواصل 24/7</p>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- Dashboard Section -->
-    <section class="dashboard-section" id="dashboard">
+    <section class="dashboard-section" id="dashboard" aria-labelledby="dashboard-title">
         <div class="dashboard-container">
             <div class="dashboard-header">
                 <div class="dashboard-title">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>لوحة تحكم المدير</span>
+                    <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
+                    <span id="dashboard-title">لوحة تحكم المدير</span>
                 </div>
                 
                 <div class="admin-info">
-                    <div class="admin-avatar">م</div>
+                    <div class="admin-avatar" aria-hidden="true">م</div>
                     <div>
                         <div style="font-weight: bold;">مدير النظام</div>
                         <div style="font-size: 0.9rem; color: var(--gray);">Admin</div>
                     </div>
-                    <button class="logout-btn" onclick="logout()">
+                    <button class="logout-btn" onclick="logout()" aria-label="تسجيل الخروج">
                         <i class="fas fa-sign-out-alt"></i> خروج
                     </button>
                 </div>
@@ -1647,9 +1619,9 @@
             
             <div class="dashboard-grid">
                 <!-- Sidebar -->
-                <div class="dashboard-sidebar">
+                <nav class="dashboard-sidebar" aria-label="قائمة لوحة التحكم">
                     <ul class="sidebar-menu">
-                        <li><a href="#dashboard" class="active"><i class="fas fa-tachometer-alt"></i>لوحة التحكم</a></li>
+                        <li><a href="#dashboard" class="active" aria-current="page"><i class="fas fa-tachometer-alt"></i>لوحة التحكم</a></li>
                         <li><a href="#appointments"><i class="fas fa-calendar-check"></i>إدارة الحجوزات</a></li>
                         <li><a href="#patients"><i class="fas fa-users"></i>إدارة المرضى</a></li>
                         <li><a href="#doctors"><i class="fas fa-user-md"></i>إدارة الأطباء</a></li>
@@ -1657,82 +1629,84 @@
                         <li><a href="#reports"><i class="fas fa-chart-bar"></i>التقارير</a></li>
                         <li><a href="#settings"><i class="fas fa-cog"></i>الإعدادات</a></li>
                     </ul>
-                </div>
+                </nav>
                 
                 <!-- Main Content -->
-                <div class="dashboard-content">
+                <main class="dashboard-content">
                     <h2>لوحة التحكم الرئيسية</h2>
                     <p style="color: var(--gray); margin-bottom: 2rem;">نظرة عامة على إحصائيات وعمليات النظام</p>
                     
                     <!-- Stats Cards -->
                     <div class="stats-cards">
-                        <div class="stat-card">
+                        <article class="stat-card">
                             <h3>إجمالي الحجوزات</h3>
                             <div class="value">156</div>
                             <div class="change positive">
-                                <i class="fas fa-arrow-up"></i>
+                                <i class="fas fa-arrow-up" aria-hidden="true"></i>
                                 <span>12% عن الشهر الماضي</span>
                             </div>
-                        </div>
+                        </article>
                         
-                        <div class="stat-card">
+                        <article class="stat-card">
                             <h3>الحجوزات المؤكدة</h3>
                             <div class="value">120</div>
                             <div class="change positive">
-                                <i class="fas fa-arrow-up"></i>
+                                <i class="fas fa-arrow-up" aria-hidden="true"></i>
                                 <span>8% عن الشهر الماضي</span>
                             </div>
-                        </div>
+                        </article>
                         
-                        <div class="stat-card">
+                        <article class="stat-card">
                             <h3>في انتظار التأكيد</h3>
                             <div class="value">36</div>
                             <div class="change negative">
-                                <i class="fas fa-arrow-down"></i>
+                                <i class="fas fa-arrow-down" aria-hidden="true"></i>
                                 <span>4% عن الشهر الماضي</span>
                             </div>
-                        </div>
+                        </article>
                         
-                        <div class="stat-card">
+                        <article class="stat-card">
                             <h3>إجمالي الإيرادات</h3>
                             <div class="value">45,800 ريال</div>
                             <div class="change positive">
-                                <i class="fas fa-arrow-up"></i>
+                                <i class="fas fa-arrow-up" aria-hidden="true"></i>
                                 <span>18% عن الشهر الماضي</span>
                             </div>
-                        </div>
+                        </article>
                     </div>
                     
                     <!-- Recent Appointments Table -->
-                    <h3 style="margin-top: 2rem;">آخر الحجوزات</h3>
-                    <div class="table-container">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>رقم الحجز</th>
-                                    <th>الاسم</th>
-                                    <th>الخدمة</th>
-                                    <th>التاريخ</th>
-                                    <th>الحالة</th>
-                                    <th>الإجراءات</th>
-                                </tr>
-                            </thead>
-                            <tbody id="appointmentsTable">
-                                <!-- Will be populated by JavaScript -->
-                            </tbody>
-                        </table>
-                    </div>
+                    <section aria-labelledby="recent-appointments">
+                        <h3 id="recent-appointments">آخر الحجوزات</h3>
+                        <div class="table-container">
+                            <table class="data-table" aria-describedby="recent-appointments">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">رقم الحجز</th>
+                                        <th scope="col">الاسم</th>
+                                        <th scope="col">الخدمة</th>
+                                        <th scope="col">التاريخ</th>
+                                        <th scope="col">الحالة</th>
+                                        <th scope="col">الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="appointmentsTable">
+                                    <!-- Dynamic content -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
                     
                     <!-- Quick Actions -->
                     <div class="dashboard-forms">
-                        <div class="form-card">
-                            <h3><i class="fas fa-plus-circle"></i> إضافة حجز جديد</h3>
+                        <section class="form-card" aria-labelledby="add-booking-title">
+                            <h3 id="add-booking-title"><i class="fas fa-plus-circle"></i> إضافة حجز جديد</h3>
                             <div class="form-group">
-                                <label>اسم المريض</label>
+                                <label for="adminPatientName">اسم المريض</label>
                                 <input type="text" id="adminPatientName" placeholder="اسم المريض">
                             </div>
                             <div class="form-group">
-                                <label>الخدمة</label>
+                                <label for="adminService">الخدمة</label>
                                 <select id="adminService">
                                     <option value="">اختر الخدمة</option>
                                     <option value="laser">ليزر إزالة الشعر</option>
@@ -1740,15 +1714,15 @@
                                     <option value="filler">حشوات الفيلر</option>
                                 </select>
                             </div>
-                            <button class="btn btn-primary" onclick="addAppointment()" style="width: 100%;">
+                            <button class="btn btn-primary" onclick="addAppointment()" style="width: 100%;" aria-label="إضافة حجز جديد">
                                 <i class="fas fa-plus"></i> إضافة حجز
                             </button>
-                        </div>
+                        </section>
                         
-                        <div class="form-card">
-                            <h3><i class="fas fa-bell"></i> إرسال إشعار</h3>
+                        <section class="form-card" aria-labelledby="send-notification-title">
+                            <h3 id="send-notification-title"><i class="fas fa-bell"></i> إرسال إشعار</h3>
                             <div class="form-group">
-                                <label>نوع الإشعار</label>
+                                <label for="notificationType">نوع الإشعار</label>
                                 <select id="notificationType">
                                     <option value="reminder">تذكير بالموعد</option>
                                     <option value="promotion">عروض ترويجية</option>
@@ -1756,15 +1730,15 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>الرسالة</label>
+                                <label for="notificationMessage">الرسالة</label>
                                 <textarea id="notificationMessage" rows="3" placeholder="نص الرسالة..."></textarea>
                             </div>
-                            <button class="btn btn-primary" onclick="sendNotification()" style="width: 100%;">
+                            <button class="btn btn-primary" onclick="sendNotification()" style="width: 100%;" aria-label="إرسال إشعار">
                                 <i class="fas fa-paper-plane"></i> إرسال
                             </button>
-                        </div>
+                        </section>
                     </div>
-                </div>
+                </main>
             </div>
         </div>
     </section>
@@ -1777,10 +1751,10 @@
                     <h3>عن العيادة</h3>
                     <p>عيادة ديرما كير تقدم أفضل خدمات التجميل الطبية بأعلى معايير الجودة والأمان، مع فريق طبي متخصص وأحدث التقنيات العالمية.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link" aria-label="تابعنا على تويتر"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="تابعنا على فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="تابعنا على إنستجرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="تواصل معنا على واتساب"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 
@@ -1798,10 +1772,10 @@
                 <div class="footer-col">
                     <h3>معلومات الاتصال</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> الرياض - المملكة العربية السعودية</a></li>
-                        <li><a href="tel:+966551234567"><i class="fas fa-phone"></i> +966 55 123 4567</a></li>
-                        <li><a href="mailto:info@dermacare.com"><i class="fas fa-envelope"></i> info@dermacare.com</a></li>
-                        <li><a href="#"><i class="fas fa-clock"></i> السبت - الخميس: 9 ص - 9 م</a></li>
+                        <li><a href="#" aria-label="عنوان العيادة"><i class="fas fa-map-marker-alt"></i> الرياض - المملكة العربية السعودية</a></li>
+                        <li><a href="tel:+966551234567" aria-label="اتصل بنا"><i class="fas fa-phone"></i> +966 55 123 4567</a></li>
+                        <li><a href="mailto:info@dermacare.com" aria-label="راسلنا عبر البريد"><i class="fas fa-envelope"></i> info@dermacare.com</a></li>
+                        <li><a href="#" aria-label="ساعات العمل"><i class="fas fa-clock"></i> السبت - الخميس: 9 ص - 9 م</a></li>
                     </ul>
                 </div>
                 
@@ -1810,12 +1784,12 @@
                     <p>تم تطوير هذا النظام بواسطة <strong>Badr Aldien</strong></p>
                     <p>مطور ويب متخصص في أنظمة الحجوزات وإدارة الأعمال</p>
                     <p style="margin-top: 1rem;">
-                        <a href="mailto:badraldien11@gmail.com" style="color: var(--primary-light);">
+                        <a href="mailto:badraldien11@gmail.com" style="color: var(--primary-light);" aria-label="راسل المطور">
                             <i class="fas fa-envelope"></i> badraldien11@gmail.com
                         </a>
                     </p>
                     <div class="social-links">
-                        <a href="https://github.com/BadrSabra" class="social-link" target="_blank">
+                        <a href="https://github.com/BadrSabra" class="social-link" target="_blank" aria-label="حساب المطور على GitHub">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
@@ -1830,8 +1804,8 @@
     </footer>
 
     <!-- Toast Notification -->
-    <div class="toast" id="toast">
-        <div class="toast-icon">
+    <div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-icon" aria-hidden="true">
             <i class="fas fa-check-circle"></i>
         </div>
         <div class="toast-content">
@@ -1840,624 +1814,179 @@
         </div>
     </div>
 
-    <script>
-        // DOM Ready
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize mobile menu
-            initMobileMenu();
-            
-            // Initialize date input
-            initDateInput();
-            
-            // Setup booking form
-            setupBookingForm();
-            
-            // Setup smooth scrolling
-            setupSmoothScroll();
-            
-            // Setup navbar scroll effect
-            setupNavbarScroll();
-            
-            // Setup active nav on scroll
-            setupActiveNavOnScroll();
-            
-            // Load dashboard data
-            loadDashboardData();
-        });
-
-        // Initialize Mobile Menu
-        function initMobileMenu() {
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const navLinks = document.getElementById('navLinks');
-            const navContainer = document.querySelector('.nav-container');
-            
-            if (mobileMenuBtn && navLinks) {
-                mobileMenuBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    navLinks.classList.toggle('active');
-                    this.classList.toggle('active');
-                    this.innerHTML = navLinks.classList.contains('active') 
-                        ? '<i class="fas fa-times"></i>' 
-                        : '<i class="fas fa-bars"></i>';
-                });
-                
-                // Close menu when clicking on a link
-                navLinks.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', function() {
-                        navLinks.classList.remove('active');
-                        mobileMenuBtn.classList.remove('active');
-                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    });
-                });
-                
-                // Close menu when clicking outside
-                document.addEventListener('click', function(e) {
-                    if (!navContainer.contains(e.target)) {
-                        navLinks.classList.remove('active');
-                        mobileMenuBtn.classList.remove('active');
-                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                });
-            }
-        }
-
-        // Initialize Date Input
-        function initDateInput() {
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            const minDate = tomorrow.toISOString().split('T')[0];
-            
-            const dateInput = document.getElementById('date');
-            if (dateInput) {
-                dateInput.min = minDate;
-                dateInput.value = minDate;
-            }
-        }
-
-        // Setup Booking Form
-        function setupBookingForm() {
-            let currentStep = 1;
-            const totalSteps = 4;
-            const bookingData = {};
-
-            const nextBtn = document.getElementById('nextBtn');
-            const prevBtn = document.getElementById('prevBtn');
-            const submitBtn = document.getElementById('submitBtn');
-            const bookingForm = document.getElementById('bookingForm');
-
-            if (!nextBtn || !prevBtn || !submitBtn || !bookingForm) return;
-
-            // Next button click
-            nextBtn.addEventListener('click', function() {
-                if (validateStep(currentStep)) {
-                    saveStepData(currentStep);
-                    
-                    // Hide current step
-                    document.getElementById(`step${currentStep}`).classList.remove('active');
-                    document.querySelector(`.step[data-step="${currentStep}"]`).classList.remove('active');
-                    
-                    // Show next step
-                    currentStep++;
-                    document.getElementById(`step${currentStep}`).classList.add('active');
-                    document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('active');
-                    
-                    // Update buttons
-                    updateStepButtons();
-                    
-                    // Update summary if last step
-                    if (currentStep === totalSteps) {
-                        updateBookingSummary();
-                    }
-                }
-            });
-
-            // Previous button click
-            prevBtn.addEventListener('click', function() {
-                if (currentStep > 1) {
-                    // Hide current step
-                    document.getElementById(`step${currentStep}`).classList.remove('active');
-                    document.querySelector(`.step[data-step="${currentStep}"]`).classList.remove('active');
-                    
-                    // Show previous step
-                    currentStep--;
-                    document.getElementById(`step${currentStep}`).classList.add('active');
-                    document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('active');
-                    
-                    // Update buttons
-                    updateStepButtons();
-                }
-            });
-
-            // Form submission
-            bookingForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                if (!validateStep(currentStep)) return;
-                
-                saveStepData(currentStep);
-                
-                // Generate booking ID
-                const bookingId = 'BK-' + Date.now().toString().slice(-6);
-                
-                // Save to localStorage
-                saveBookingToStorage(bookingId);
-                
-                // Show success message
-                showToast(
-                    'تم الحجز بنجاح! ✅',
-                    `تم تأكيد حجز موعدك بنجاح. رقم الحجز: ${bookingId}. سيتم التواصل معك للتأكيد.`,
-                    'success'
-                );
-                
-                // Reset form after delay
-                setTimeout(() => {
-                    resetBookingForm();
-                    showToast(
-                        'تم إرسال الإشعار',
-                        'تم إرسال تأكيد الحجز إلى بريدك الإلكتروني ورقم جوالك',
-                        'success'
-                    );
-                }, 2000);
-            });
-
-            // Update step buttons visibility
-            function updateStepButtons() {
-                if (currentStep === 1) {
-                    prevBtn.style.display = 'none';
-                    nextBtn.style.display = 'inline-flex';
-                    submitBtn.style.display = 'none';
-                } else if (currentStep === totalSteps) {
-                    prevBtn.style.display = 'inline-flex';
-                    nextBtn.style.display = 'none';
-                    submitBtn.style.display = 'inline-flex';
-                } else {
-                    prevBtn.style.display = 'inline-flex';
-                    nextBtn.style.display = 'inline-flex';
-                    submitBtn.style.display = 'none';
-                }
-            }
-
-            // Validate current step
-            function validateStep(step) {
-                switch(step) {
-                    case 1:
-                        const service = document.getElementById('service').value;
-                        const doctor = document.getElementById('doctor').value;
-                        
-                        if (!service || !doctor) {
-                            showToast('خطأ', 'الرجاء اختيار الخدمة والطبيب', 'error');
-                            return false;
-                        }
-                        return true;
-                        
-                    case 2:
-                        const date = document.getElementById('date').value;
-                        const time = document.getElementById('time').value;
-                        
-                        if (!date || !time) {
-                            showToast('خطأ', 'الرجاء اختيار التاريخ والوقت', 'error');
-                            return false;
-                        }
-                        return true;
-                        
-                    case 3:
-                        const name = document.getElementById('name').value;
-                        const phone = document.getElementById('phone').value;
-                        
-                        if (!name || !phone) {
-                            showToast('خطأ', 'الرجاء ملء الاسم ورقم الجوال', 'error');
-                            return false;
-                        }
-                        
-                        // Validate Saudi phone number
-                        const phoneRegex = /^(05)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/;
-                        if (!phoneRegex.test(phone)) {
-                            showToast('خطأ', 'الرجاء إدخال رقم جوال سعودي صحيح', 'error');
-                            return false;
-                        }
-                        
-                        // Validate email if provided
-                        const email = document.getElementById('email').value;
-                        if (email && !validateEmail(email)) {
-                            showToast('خطأ', 'الرجاء إدخال بريد إلكتروني صحيح', 'error');
-                            return false;
-                        }
-                        return true;
-                        
-                    case 4:
-                        const terms = document.getElementById('terms').checked;
-                        if (!terms) {
-                            showToast('خطأ', 'الرجاء الموافقة على الشروط والأحكام', 'error');
-                            return false;
-                        }
-                        return true;
-                        
-                    default:
-                        return true;
-                }
-            }
-
-            // Save step data
-            function saveStepData(step) {
-                switch(step) {
-                    case 1:
-                        bookingData.service = document.getElementById('service').value;
-                        bookingData.doctor = document.getElementById('doctor').value;
-                        break;
-                        
-                    case 2:
-                        bookingData.date = document.getElementById('date').value;
-                        bookingData.time = document.getElementById('time').value;
-                        break;
-                        
-                    case 3:
-                        bookingData.name = document.getElementById('name').value;
-                        bookingData.phone = document.getElementById('phone').value;
-                        bookingData.email = document.getElementById('email').value;
-                        bookingData.notes = document.getElementById('notes').value;
-                        break;
-                }
-            }
-
-            // Update booking summary
-            function updateBookingSummary() {
-                const serviceNames = {
-                    laser: 'ليزر إزالة الشعر',
-                    botox: 'حقن البوتوكس',
-                    filler: 'حشوات الفيلر',
-                    skin: 'علاجات البشرة'
-                };
-                
-                const doctorNames = {
-                    dr1: 'د. سارة أحمد',
-                    dr2: 'د. محمد الخالد',
-                    dr3: 'د. نورة الفهد'
-                };
-                
-                const servicePrices = {
-                    laser: '250 ريال',
-                    botox: '800 ريال',
-                    filler: '1,200 ريال',
-                    skin: '600 ريال'
-                };
-                
-                const summaryHTML = `
-                    <div style="background: var(--light); padding: 1.5rem; border-radius: var(--radius);">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                            <div>
-                                <strong>الخدمة:</strong><br>
-                                ${serviceNames[bookingData.service] || bookingData.service}
-                            </div>
-                            <div>
-                                <strong>السعر:</strong><br>
-                                ${servicePrices[bookingData.service] || ''}
-                            </div>
-                            <div>
-                                <strong>الطبيب:</strong><br>
-                                ${doctorNames[bookingData.doctor] || bookingData.doctor}
-                            </div>
-                            <div>
-                                <strong>التاريخ:</strong><br>
-                                ${formatArabicDate(bookingData.date)} الساعة ${bookingData.time}
-                            </div>
-                            <div>
-                                <strong>الاسم:</strong><br>
-                                ${bookingData.name}
-                            </div>
-                            <div>
-                                <strong>الجوال:</strong><br>
-                                ${bookingData.phone}
-                            </div>
-                        </div>
-                        ${bookingData.notes ? `<div><strong>ملاحظات:</strong><br>${bookingData.notes}</div>` : ''}
-                    </div>
-                `;
-                
-                document.getElementById('summaryDetails').innerHTML = summaryHTML;
-            }
-
-            // Save booking to localStorage
-            function saveBookingToStorage(bookingId) {
-                const bookings = JSON.parse(localStorage.getItem('clinicBookings') || '[]');
-                
-                const bookingRecord = {
-                    id: bookingId,
-                    ...bookingData,
-                    status: 'pending',
-                    createdAt: new Date().toISOString()
-                };
-                
-                bookings.push(bookingRecord);
-                localStorage.setItem('clinicBookings', JSON.stringify(bookings));
-                
-                // Update dashboard
-                loadDashboardData();
-            }
-
-            // Reset booking form
-            function resetBookingForm() {
-                // Reset form
-                bookingForm.reset();
-                
-                // Reset to first step
-                document.querySelectorAll('.form-step').forEach(step => {
-                    step.classList.remove('active');
-                });
-                document.querySelectorAll('.step').forEach(step => {
-                    step.classList.remove('active');
-                });
-                
-                document.getElementById('step1').classList.add('active');
-                document.querySelector('.step[data-step="1"]').classList.add('active');
-                
-                currentStep = 1;
-                updateStepButtons();
-                
-                // Clear booking data
-                Object.keys(bookingData).forEach(key => delete bookingData[key]);
-                
-                // Reinitialize date
-                initDateInput();
-            }
-        }
-
-        // Setup Smooth Scroll
-        function setupSmoothScroll() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href === '#') return;
-                    
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        window.scrollTo({
-                            top: target.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        }
-
-        // Setup Navbar Scroll Effect
-        function setupNavbarScroll() {
-            const navbar = document.querySelector('.navbar');
-            
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-        }
-
-        // Setup Active Nav on Scroll
-        function setupActiveNavOnScroll() {
-            const sections = document.querySelectorAll('section[id], footer[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            window.addEventListener('scroll', function() {
-                let current = '';
-                const scrollPos = window.scrollY + 100;
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-        }
-
-        // Load Dashboard Data
-        function loadDashboardData() {
-            const bookings = JSON.parse(localStorage.getItem('clinicBookings') || '[]');
-            const tableBody = document.getElementById('appointmentsTable');
-            
-            if (tableBody) {
-                // Clear existing rows
-                tableBody.innerHTML = '';
-                
-                // Add sample data if no bookings
-                if (bookings.length === 0) {
-                    const sampleBookings = [
-                        { id: 'BK-2024001', name: 'أحمد محمد', service: 'ليزر إزالة الشعر', date: '2024-03-20 10:00', status: 'confirmed' },
-                        { id: 'BK-2024002', name: 'سارة عبدالله', service: 'حقن البوتوكس', date: '2024-03-21 11:00', status: 'pending' },
-                        { id: 'BK-2024003', name: 'فاطمة خالد', service: 'حشوات الفيلر', date: '2024-03-22 14:00', status: 'confirmed' },
-                        { id: 'BK-2024004', name: 'محمد علي', service: 'علاجات البشرة', date: '2024-03-23 16:00', status: 'cancelled' },
-                        { id: 'BK-2024005', name: 'نورة سعيد', service: 'ليزر إزالة الشعر', date: '2024-03-24 09:00', status: 'pending' }
-                    ];
-                    
-                    sampleBookings.forEach(booking => {
-                        const row = createAppointmentRow(booking);
-                        tableBody.appendChild(row);
-                    });
-                } else {
-                    // Show latest 5 bookings
-                    const latestBookings = bookings.slice(-5).reverse();
-                    latestBookings.forEach(booking => {
-                        const row = createAppointmentRow(booking);
-                        tableBody.appendChild(row);
-                    });
-                }
-            }
-        }
-
-        // Create Appointment Row
-        function createAppointmentRow(booking) {
-            const row = document.createElement('tr');
-            
-            const statusClass = {
-                confirmed: 'status-confirmed',
-                pending: 'status-pending',
-                cancelled: 'status-cancelled'
-            }[booking.status] || 'status-pending';
-            
-            const statusText = {
-                confirmed: 'مؤكدة',
-                pending: 'في الانتظار',
-                cancelled: 'ملغية'
-            }[booking.status] || 'في الانتظار';
-            
-            row.innerHTML = `
-                <td>${booking.id}</td>
-                <td>${booking.name}</td>
-                <td>${booking.service}</td>
-                <td>${booking.date}</td>
-                <td><span class="status-badge ${statusClass}">${statusText}</span></td>
-                <td>
-                    <div class="action-buttons">
-                        <button class="action-btn btn-confirm" onclick="confirmAppointment('${booking.id}')" title="تأكيد">
-                            <i class="fas fa-check"></i>
-                        </button>
-                        <button class="action-btn btn-edit" onclick="editAppointment('${booking.id}')" title="تعديل">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button class="action-btn btn-delete" onclick="deleteAppointment('${booking.id}')" title="حذف">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                </td>
-            `;
-            
-            return row;
-        }
-
-        // Dashboard Functions
-        function logout() {
-            showToast('تم الخروج', 'تم تسجيل الخروج من لوحة التحكم بنجاح', 'success');
-            setTimeout(() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 1000);
-        }
-
-        function addAppointment() {
-            const patientName = document.getElementById('adminPatientName').value;
-            const service = document.getElementById('adminService').value;
-            
-            if (!patientName || !service) {
-                showToast('خطأ', 'الرجاء ملء جميع الحقول', 'error');
-                return;
-            }
-            
-            const bookingId = 'ADM-' + Date.now().toString().slice(-6);
-            const serviceNames = {
-                laser: 'ليزر إزالة الشعر',
-                botox: 'حقن البوتوكس',
-                filler: 'حشوات الفيلر'
-            };
-            
-            showToast('تمت الإضافة', `تم إضافة حجز جديد لـ ${patientName}`, 'success');
-            
-            // Clear form
-            document.getElementById('adminPatientName').value = '';
-            document.getElementById('adminService').value = '';
-            
-            // Update table
-            loadDashboardData();
-        }
-
-        function sendNotification() {
-            const type = document.getElementById('notificationType').value;
-            const message = document.getElementById('notificationMessage').value;
-            
-            if (!message) {
-                showToast('خطأ', 'الرجاء كتابة رسالة', 'error');
-                return;
-            }
-            
-            const notificationTypes = {
-                reminder: 'تذكير بالموعد',
-                promotion: 'عروض ترويجية',
-                update: 'تحديثات النظام'
-            };
-            
-            showToast('تم الإرسال', `تم إرسال إشعار ${notificationTypes[type]} إلى جميع المستخدمين`, 'success');
-            
-            // Clear form
-            document.getElementById('notificationMessage').value = '';
-        }
-
-        function confirmAppointment(id) {
-            showToast('تم التأكيد', `تم تأكيد الحجز ${id} بنجاح`, 'success');
-            // In a real app, you would update the appointment status in the database
-        }
-
-        function editAppointment(id) {
-            showToast('فتح التعديل', `فتح تعديل الحجز ${id}`, 'success');
-            // In a real app, you would open an edit form
-        }
-
-        function deleteAppointment(id) {
-            if (confirm(`هل أنت متأكد من حذف الحجز ${id}؟`)) {
-                showToast('تم الحذف', `تم حذف الحجز ${id} بنجاح`, 'success');
-                // In a real app, you would delete from the database
-                loadDashboardData();
-            }
-        }
-
-        // Select Service from service cards
-        function selectService(serviceType) {
-            const serviceSelect = document.getElementById('service');
-            const serviceOptions = {
-                laser: 'ليزر إزالة الشعر - 250 ريال',
-                botox: 'حقن البوتوكس - 800 ريال',
-                skin: 'علاجات البشرة - 600 ريال'
-            };
-            
-            if (serviceSelect) {
-                serviceSelect.value = serviceType;
-                
-                // Scroll to booking section
-                document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
-                
-                // Show success message
-                showToast('تم الاختيار', `تم اختيار ${serviceOptions[serviceType]}`, 'success');
-            }
-        }
-
-        // Format Arabic Date
-        function formatArabicDate(dateString) {
-            const date = new Date(dateString);
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            return date.toLocaleDateString('ar-SA', options);
-        }
-
-        // Validate Email
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-
-        // Show Toast Notification
-        function showToast(title, message, type = 'success') {
-            const toast = document.getElementById('toast');
-            const toastTitle = document.getElementById('toastTitle');
-            const toastMessage = document.getElementById('toastMessage');
-            
-            if (toast && toastTitle && toastMessage) {
-                toast.className = `toast ${type}`;
-                toastTitle.textContent = title;
-                toastMessage.textContent = message;
-                
-                toast.classList.add('show');
-                
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 5000);
-            }
-        }
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "عيادة ديرما كير",
+        "description": "عيادة تجميلية متخصصة تقدم خدمات الليزر، الحقن التجميلي، وعلاجات البشرة",
+        "url": "https://badrsabra.github.io/clinic-booking-system/",
+        "telephone": "+966551234567",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "الرياض",
+            "addressRegion": "الرياض",
+            "addressCountry": "SA"
+        },
+        "openingHours": [
+            "Sa-Th 09:00-21:00",
+            "Fr 16:00-22:00"
+        ],
+        "priceRange": "$$",
+        "image": "https://images.unsplash.com/photo-1551601651-2a8555f1a136",
+        "medicalSpecialty": "CosmeticSurgery"
+    }
     </script>
-</body>
-</html>
+    
+    <script>
+        (function() {
+            'use strict';
+            
+            // Initialize App
+            document.addEventListener('DOMContentLoaded', function() {
+                App.init();
+            });
+            
+            // Main App Module
+            const App = {
+                init: function() {
+                    this.initMobileMenu();
+                    this.initBookingSystem();
+                    this.initDashboard();
+                    this.initAnimations();
+                    this.initA11y();
+                },
+                
+                // Mobile Menu
+                initMobileMenu: function() {
+                    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                    const navLinks = document.getElementById('navLinks');
+                    const navContainer = document.querySelector('.nav-container');
+                    
+                    if (!mobileMenuBtn || !navLinks) return;
+                    
+                    mobileMenuBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const isExpanded = navLinks.classList.toggle('active');
+                        this.setAttribute('aria-expanded', isExpanded);
+                        this.innerHTML = isExpanded 
+                            ? '<i class="fas fa-times"></i>' 
+                            : '<i class="fas fa-bars"></i>';
+                    });
+                    
+                    // Close menu when clicking on links
+                    navLinks.querySelectorAll('a').forEach(link => {
+                        link.addEventListener('click', function() {
+                            navLinks.classList.remove('active');
+                            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        });
+                    });
+                    
+                    // Close menu when clicking outside
+                    document.addEventListener('click', function(e) {
+                        if (!navContainer.contains(e.target)) {
+                            navLinks.classList.remove('active');
+                            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
+                    });
+                },
+                
+                // Booking System
+                initBookingSystem: function() {
+                    const bookingSystem = new BookingSystem();
+                    window.bookingSystem = bookingSystem;
+                },
+                
+                // Dashboard
+                initDashboard: function() {
+                    const dashboard = new Dashboard();
+                    window.dashboard = dashboard;
+                },
+                
+                // Animations
+                initAnimations: function() {
+                    // Animate on scroll
+                    const observerOptions = {
+                        threshold: 0.1,
+                        rootMargin: '0px 0px -50px 0px'
+                    };
+                    
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                            }
+                        });
+                    }, observerOptions);
+                    
+                    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                        observer.observe(el);
+                    });
+                },
+                
+                // Accessibility
+                initA11y: function() {
+                    // Add skip to content link
+                    const skipLink = document.createElement('a');
+                    skipLink.href = '#main-content';
+                    skipLink.className = 'sr-only';
+                    skipLink.textContent = 'تخطي إلى المحتوى الرئيسي';
+                    document.body.insertBefore(skipLink, document.body.firstChild);
+                    
+                    // Add main content id
+                    const mainContent = document.querySelector('.hero');
+                    if (mainContent) {
+                        mainContent.id = 'main-content';
+                        mainContent.setAttribute('tabindex', '-1');
+                    }
+                }
+            };
+            
+            // Booking System Class
+            class BookingSystem {
+                constructor() {
+                    this.currentStep = 1;
+                    this.totalSteps = 4;
+                    this.bookingData = {};
+                    
+                    this.init();
+                }
+                
+                init() {
+                    this.initDateInput();
+                    this.setupEventListeners();
+                    this.updateStepButtons();
+                }
+                
+                initDateInput() {
+                    const dateInput = document.getElementById('date');
+                    if (!dateInput) return;
+                    
+                    const tomorrow = new Date();
+                    tomorrow.setDate(tomorrow.getDate() + 1);
+                    const minDate = tomorrow.toISOString().split('T')[0];
+                    
+                    dateInput.min = minDate;
+                    dateInput.value = minDate;
+                    
+                    // Format for display
+                    dateInput.addEventListener('change', function() {
+                        const date = new Date(this.value);
+                        const formatted = date.toLocaleDateString('ar-SA', {
+                            weekday: 'long',
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        });
+                        this.setAttribute('data-formatted', formatted);
+                    });
+                }
+                
+                setupEventListeners() {
+                    const nextBtn = document.getElementById('nextBtn');
+                    const prevBtn = document.getElementById('prevBtn');
+                    const submitBtn = document.getElementById('submitBtn');
+                    const bookingForm
